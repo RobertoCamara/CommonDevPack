@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3894ADCA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{76CB5D67-C81C-47A0-9758-EC4C6C7FB7C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDevPack.Infra.Cache", "src\CommonDevPack.Infra.Cache\CommonDevPack.Infra.Cache.csproj", "{D77FF200-6F34-48B6-987B-BD4158A098C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDevPack.Infra.Cache", "src\CommonDevPack.Infra.Cache\CommonDevPack.Infra.Cache.csproj", "{D77FF200-6F34-48B6-987B-BD4158A098C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{7B17F283-6A39-49B9-9216-5D997BF457B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.ConsoleApp", "src\Infra.ConsoleApp\Infra.ConsoleApp.csproj", "{830BF636-D52D-4BDF-9A1F-AED7A02ED522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.ConsoleApp", "src\Infra.ConsoleApp\Infra.ConsoleApp.csproj", "{830BF636-D52D-4BDF-9A1F-AED7A02ED522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

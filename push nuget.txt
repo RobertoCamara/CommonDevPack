@@ -1,1 +1,0 @@
-dotnet nuget push CommonDevPack.x.x.x.nupkg --api-key [mykey] --source https://api.nuget.org/v3/index.json

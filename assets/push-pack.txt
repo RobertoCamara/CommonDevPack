@@ -1,0 +1,1 @@
+dotnet nuget push ../src/CommonDevPack.Infra.Cache/bin/Release/CommonDevPack.Redis.1.0.0.nupkg --api-key oy2g6swpbyuovuyfegnq4oa5fbw7q6ku3de5wkxidlcl7i --source https://api.nuget.org/v3/index.json
