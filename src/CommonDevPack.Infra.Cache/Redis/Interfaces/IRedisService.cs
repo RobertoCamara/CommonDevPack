@@ -3,6 +3,10 @@
 namespace CommonDevPack.Infra.Cache.Redis.Interfaces;
 public interface IRedisService
 {
+    bool IsConnected { get; }
+    bool IsConnecting { get; }
+    string GetClientName();
+    string GetStatus();
     bool Set(string key, string data);
     bool Set(string key, string value, int expirationTime = 0, When when = When.Always);
     Task<bool> SetAsync(string key, string value, int expirationTime = 0, When when = When.Always);

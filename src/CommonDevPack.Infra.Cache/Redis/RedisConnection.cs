@@ -10,10 +10,9 @@ public class RedisConnection : IRedisConnection
     public RedisConnection(IOptions<RedisConfiguration> servicesConfiguration,
         bool preventthreadtheft = false)
     {
-        var configuration =
-            servicesConfiguration.Value ?? throw new ArgumentNullException(nameof(servicesConfiguration), "Parameter cannot be null.");
+        ArgumentNullException.ThrowIfNull(servicesConfiguration.Value.ConnectionString, "ConnectionString");
 
         ConnectionMultiplexer.SetFeatureFlag("preventthreadtheft", preventthreadtheft);
-        RedisCache = ConnectionMultiplexer.Connect(configuration.ConnectionString);
+        RedisCache = ConnectionMultiplexer.Connect(servicesConfiguration.Value.ConnectionString);
     }
 }

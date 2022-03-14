@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace CommonDevPack.Infra.Cache.Tests.Redis;
+namespace CommonDevPack.Infra.Cache.Tests.Redis.CacheConfigurationExtensions;
 
 
 [Collection(nameof(CacheConfigurationExtensionsTestFixture))]

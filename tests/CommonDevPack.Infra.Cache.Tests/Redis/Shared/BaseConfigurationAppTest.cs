@@ -1,13 +1,11 @@
 ﻿using CommonDevPack.Infra.Cache.Redis;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using System;
 using Xunit;
 
-namespace CommonDevPack.Infra.Cache.Tests.Redis;
-public class CacheConfigurationExtensionsTestFixture
+namespace CommonDevPack.Infra.Cache.Tests.Redis.Shared;
+public class BaseConfigurationAppTest
 {
     public IConfiguration GetConfiguration(string appsettings) =>
            new ConfigurationBuilder()
@@ -25,12 +23,5 @@ public class CacheConfigurationExtensionsTestFixture
                     services.AddRedisConfigure(GetConfiguration(appsettings), customSectionKey);
             })
             .Build();
-
-    public IOptions<RedisConfiguration> GetRedisConfigurationInstance(IHost host) => 
-        host.Services.GetService<IOptions<RedisConfiguration>>();
 }
 
-[CollectionDefinition(nameof(CacheConfigurationExtensionsTestFixture))]
-public class CacheConfigurationExtensionsTestFixtureCollection
-    : ICollectionFixture<CacheConfigurationExtensionsTestFixture>
-{ }

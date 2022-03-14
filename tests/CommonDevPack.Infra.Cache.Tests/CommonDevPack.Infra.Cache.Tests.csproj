@@ -31,6 +31,9 @@
     <None Update="appsettings-customsection.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="appsettings-fail-expirationtime.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="appsettings-fail.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

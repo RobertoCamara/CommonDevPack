@@ -17,13 +17,24 @@ public class RedisService : IRedisService
         IOptions<RedisConfiguration> servicesConfiguration,
         ILogger<RedisService> logger)
     {
-        _configuration =
-            servicesConfiguration.Value ?? throw new ArgumentNullException(nameof(servicesConfiguration), "Parameter cannot be null.");
-
+        _configuration = servicesConfiguration.Value;
         _connection = redisConnection;
-        _database = redisConnection.RedisCache.GetDatabase();
+        _database = redisConnection.RedisCache.GetDatabase();        
         _logger = logger;
     }
+
+    public bool IsConnected => _connection.RedisCache.IsConnected;
+    public bool IsConnecting => _connection.RedisCache.IsConnecting;
+
+    public string GetClientName()
+    {
+        return _connection.RedisCache.ClientName;
+    }
+
+    public string GetStatus()
+    {
+        return _connection.RedisCache.GetStatus();
+    }    
 
     public void Delete(string key)
     {

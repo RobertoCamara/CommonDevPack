@@ -25,8 +25,11 @@ class Program
         Console.WriteLine(configurations);
 
         var key = Guid.NewGuid().ToString();
+        var value = DateTime.Now.ToString();
+        
+        _redisService.Set(key, value);
 
-        _redisService.Set(key, DateTime.Now.ToString());
+        Console.WriteLine($"Value set for redis to key: {key}\r\n->> Value: {value}");
 
         Console.WriteLine($"Get from redis by Key: {key}\r\n->> result: {_redisService.Get(key)}");
 
@@ -48,6 +51,6 @@ public class TestRedisConfiguration
 
     public string WriteConfigurations()
     {
-        return $"Configurations:\r\n->> {_redisConfiguration.ConnectionString}\r\n->> {_redisConfiguration.DefaultExpirationTimeInSeconds}\r\n->> {_redisConfiguration.ExpirationTimeStatus}\r\n"; 
+        return $"Configurations:\r\n->> {_redisConfiguration.ConnectionString}\r\n->> {_redisConfiguration.DefaultExpirationTimeInSeconds}\r\n"; 
     }
 }
