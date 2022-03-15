@@ -63,6 +63,35 @@ public class RedisService : IRedisService
         return JsonSerializer.Deserialize<T>(value);
     }
 
+    public async IAsyncEnumerable<T> GetAllValuesAsync<T>()
+    {
+        var keys = GetAllKeysAsync();
+        await foreach (var key in keys)
+        {
+            yield return await GetAsync<T>(key);
+        }
+    }
+
+    public async IAsyncEnumerable<string> GetAllValuesAsync()
+    {
+        var keys = GetAllKeysAsync();
+        await foreach (var key in keys)
+        {
+            yield return Get(key);
+        }
+    }
+
+    public async IAsyncEnumerable<string> GetAllKeysAsync()
+    {
+        var endpoint = _connection.RedisCache.GetEndPoints()?.FirstOrDefault();
+        var server = _connection.RedisCache.GetServer(endpoint);
+        IAsyncEnumerable<RedisKey> keys = server.KeysAsync();
+        await foreach (RedisKey key in keys)
+        {
+            yield return key.ToString();
+        }
+    }
+
     public bool KeyExists(string key)
     {
         return _database.KeyExists(key);

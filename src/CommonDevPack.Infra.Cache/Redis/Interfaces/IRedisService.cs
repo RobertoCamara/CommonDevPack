@@ -5,6 +5,10 @@ public interface IRedisService
 {
     bool IsConnected { get; }
     bool IsConnecting { get; }
+
+    IAsyncEnumerable<string> GetAllKeysAsync();
+    IAsyncEnumerable<T> GetAllValuesAsync<T>();
+    IAsyncEnumerable<string> GetAllValuesAsync();
     string GetClientName();
     string GetStatus();
     bool Set(string key, string data);
