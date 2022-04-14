@@ -4,7 +4,24 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>CommonDevPack.FluentValidationExtensions</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>Roberto Camara</Authors>
+    <Company>Roberto Camara</Company>
+    <Description>FluentValidationExtensions implementations to help our development.</Description>
+    <PackageProjectUrl>https://github.com/RobertoCamara/CommonDevPack/tree/main/src/CommonDevPack.Domain.Core.FluentValidation</PackageProjectUrl>
+    <Copyright>Roberto Camara</Copyright>
+    <PackageIcon>RC.png</PackageIcon>
+    <RepositoryUrl>https://github.com/RobertoCamara/CommonDevPack/tree/main/src/CommonDevPack.Domain.Core.FluentValidation</RepositoryUrl>
+    <PackageTags>csharp;.net6;fluentvalidation;extensions;roberto-camara</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\assets\RC.png" Link="RC.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.4.0" />

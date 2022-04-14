@@ -14,6 +14,7 @@
 	<PackageTags>redis;cache;csharp;.net6;nosql;nosql-database;in-memory-storage;in-memory-database;keyvalue-storage;roberto-camara</PackageTags>
 	<Description>Redis implementations to help our development.</Description>
 	<PackageIcon>RC.png</PackageIcon>
+	<Copyright>Roberto Camara</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
