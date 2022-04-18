@@ -12,6 +12,8 @@
     <Copyright>Roberto Camara</Copyright>
     <PackageIcon>RC.png</PackageIcon>
     <PackageTags>csharp;.net6;datetime;netcore;net6;extensions;roberto-camara</PackageTags>
+    <PackageProjectUrl>https://github.com/RobertoCamara/CommonDevPack/tree/main/src/CommonDevPack.Core.Extensions.DateTime</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RobertoCamara/CommonDevPack/tree/main/src/CommonDevPack.Core.Extensions.DateTime</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
