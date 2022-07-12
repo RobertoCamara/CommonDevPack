@@ -6,9 +6,24 @@ public interface IRedisService
     bool IsConnected { get; }
     bool IsConnecting { get; }
 
-    IAsyncEnumerable<string> GetAllKeysAsync();
-    IAsyncEnumerable<T> GetAllValuesAsync<T>();
-    IAsyncEnumerable<string> GetAllValuesAsync();
+    IAsyncEnumerable<string> GetAllKeysAsync(
+        string? pattern = default, 
+        int pageSize = int.MaxValue, 
+        long cursor = 0,
+        int pageOffset = 0
+    );
+    IAsyncEnumerable<T> GetAllValuesAsync<T>(
+        string? pattern = default,
+        int pageSize = int.MaxValue,
+        long cursor = 0,
+        int pageOffset = 0
+    );
+    IAsyncEnumerable<string> GetAllValuesAsync(
+        string? pattern = default,
+        int pageSize = int.MaxValue,
+        long cursor = 0,
+        int pageOffset = 0
+    );
     string GetClientName();
     string GetStatus();
     bool Set(string key, string data);

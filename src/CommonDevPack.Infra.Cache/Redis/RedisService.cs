@@ -19,9 +19,12 @@ public class RedisService : IRedisService
     {
         _configuration = servicesConfiguration.Value;
         _connection = redisConnection;
-        _database = redisConnection.RedisCache.GetDatabase();        
+        _database = redisConnection.RedisCache.GetDatabase();
         _logger = logger;
     }
+
+    private string? BuildPatternParameter(string? pattern = default)
+        => pattern is not null ? $"*{pattern}*" : default;
 
     public bool IsConnected => _connection.RedisCache.IsConnected;
     public bool IsConnecting => _connection.RedisCache.IsConnecting;
@@ -34,7 +37,7 @@ public class RedisService : IRedisService
     public string GetStatus()
     {
         return _connection.RedisCache.GetStatus();
-    }    
+    }
 
     public void Delete(string key)
     {
@@ -63,29 +66,59 @@ public class RedisService : IRedisService
         return JsonSerializer.Deserialize<T>(value);
     }
 
-    public async IAsyncEnumerable<T> GetAllValuesAsync<T>()
+    public async IAsyncEnumerable<T> GetAllValuesAsync<T>(
+        string? pattern = default,
+        int pageSize = int.MaxValue,
+        long cursor = 0,
+        int pageOffset = 0
+    )
     {
-        var keys = GetAllKeysAsync();
+        var keys = GetAllKeysAsync(
+            BuildPatternParameter(pattern),
+            pageSize,
+            cursor,
+            pageOffset
+        );
         await foreach (var key in keys)
         {
             yield return await GetAsync<T>(key);
         }
     }
 
-    public async IAsyncEnumerable<string> GetAllValuesAsync()
+    public async IAsyncEnumerable<string> GetAllValuesAsync(
+        string? pattern = default,
+        int pageSize = int.MaxValue,
+        long cursor = 0,
+        int pageOffset = 0
+    )
     {
-        var keys = GetAllKeysAsync();
+        var keys = GetAllKeysAsync(
+            BuildPatternParameter(pattern),
+            pageSize,
+            cursor,
+            pageOffset
+        );
         await foreach (var key in keys)
         {
             yield return Get(key);
         }
     }
 
-    public async IAsyncEnumerable<string> GetAllKeysAsync()
+    public async IAsyncEnumerable<string> GetAllKeysAsync(
+        string? pattern = default,
+        int pageSize = int.MaxValue,
+        long cursor = 0,
+        int pageOffset = 0
+    )
     {
         var endpoint = _connection.RedisCache.GetEndPoints()?.FirstOrDefault();
         var server = _connection.RedisCache.GetServer(endpoint);
-        IAsyncEnumerable<RedisKey> keys = server.KeysAsync();
+        IAsyncEnumerable<RedisKey> keys = server.KeysAsync(
+            pattern: BuildPatternParameter(pattern),
+            pageSize: pageSize,
+            cursor: cursor,
+            pageOffset: pageOffset
+        );
         await foreach (RedisKey key in keys)
         {
             yield return key.ToString();
